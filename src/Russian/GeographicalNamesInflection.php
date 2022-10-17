@@ -50,6 +50,9 @@ class GeographicalNamesInflection extends \morphos\BaseInflection implements Cas
         'шереметьево',
         'остафьево',
         'пулково',
+        
+        'иваново',
+        'кемерово',
 
         // фикс для Марий Эл
         'марий',
@@ -252,6 +255,36 @@ class GeographicalNamesInflection extends \morphos\BaseInflection implements Cas
         // Само склонение
         if (!in_array($name, static::$abbreviations, true)) {
             switch (S::slice($name, -2)) {
+                
+                // МОИ
+                
+                case 'ши':
+                    $prefix = S::name(S::slice($name, 0, -2));
+                    return [
+                        static::IMENIT => $prefix.'ши',
+                        static::RODIT => $prefix.'шей',
+                        static::DAT => $prefix.'шам',
+                        static::VINIT => $prefix.'ши',
+                        static::TVORIT => $prefix.'шами',
+                        static::PREDLOJ => $prefix.'шах',
+                        static::LOCATIVE => $prefix.'шах',
+                    ];
+                    
+                case 'щи':
+                    $prefix = S::name(S::slice($name, 0, -2));
+                    return [
+                        static::IMENIT => $prefix.'щи',
+                        static::RODIT => $prefix.'щ',
+                        static::DAT => $prefix.'щам',
+                        static::VINIT => $prefix.'щи',
+                        static::TVORIT => $prefix.'щами',
+                        static::PREDLOJ => $prefix.'щах',
+                        static::LOCATIVE => $prefix.'щах',
+                    ];
+                    
+                // КОНЕЦ МОИ
+                
+                
                 // Нижний, Русский
                 case 'ий':
                     $prefix = S::name(S::slice($name, 0, -2));
