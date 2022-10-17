@@ -256,8 +256,7 @@ class GeographicalNamesInflection extends \morphos\BaseInflection implements Cas
         if (!in_array($name, static::$abbreviations, true)) {
             switch (S::slice($name, -2)) {
                 
-                // МОИ
-                
+                // ши
                 case 'ши':
                     $prefix = S::name(S::slice($name, 0, -2));
                     return [
@@ -269,7 +268,8 @@ class GeographicalNamesInflection extends \morphos\BaseInflection implements Cas
                         static::PREDLOJ => $prefix.'шах',
                         static::LOCATIVE => $prefix.'шах',
                     ];
-                    
+
+                // щи
                 case 'щи':
                     $prefix = S::name(S::slice($name, 0, -2));
                     return [
@@ -281,9 +281,6 @@ class GeographicalNamesInflection extends \morphos\BaseInflection implements Cas
                         static::PREDLOJ => $prefix.'щах',
                         static::LOCATIVE => $prefix.'щах',
                     ];
-                    
-                // КОНЕЦ МОИ
-                
                 
                 // Нижний, Русский
                 case 'ий':
