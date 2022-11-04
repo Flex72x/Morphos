@@ -45,14 +45,6 @@ class GeographicalNamesInflection extends \morphos\BaseInflection implements Cas
         'алматы',
         'сочи',
         'гоа',
-        'домодедово',
-        'внуково',
-        'шереметьево',
-        'остафьево',
-        'пулково',
-        
-        'иваново',
-        'кемерово',
 
         // фикс для Марий Эл
         'марий',
@@ -62,15 +54,9 @@ class GeographicalNamesInflection extends \morphos\BaseInflection implements Cas
         'алма',
         'буда',
         'йошкар',
-        'кабардино',
-        'карачаево',
-        'рублёво',
         'санкт',
         'улан',
         'ханты',
-        'орехово',
-        'лосино',
-        'юрьево',
         'наро',
 
         // Зарубежные названия
@@ -191,6 +177,7 @@ class GeographicalNamesInflection extends \morphos\BaseInflection implements Cas
         // Проверка на неизменяемость
         if (in_array($name, static::$immutableNames, true)
             || (strpos($name, '-') !== false && S::stringContains($name, static::$immutableTriggerPrefixes))
+            || in_array(S::slice(S::lower($name), -3, 0), ['ово', 'ёво', 'ево', 'ино', 'ыно'], true)
         ) {
             return array_fill_keys(
                 [static::IMENIT, static::RODIT, static::DAT, static::VINIT, static::TVORIT, static::PREDLOJ, static::LOCATIVE]
